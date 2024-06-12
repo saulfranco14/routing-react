@@ -1,30 +1,75 @@
-# React + TypeScript + Vite
+# Routing en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto está diseñado para demostrar la funcionalidad de protección de rutas utilizando React, TypeScript y Vite. Implementa una arquitectura limpia para mejorar la visibilidad y escalabilidad.
 
-Currently, two official plugins are available:
+## Funcionalidades Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Protección de Rutas
 
-## Expanding the ESLint configuration
+- **AuthGuard**: Verifica si el usuario está autenticado antes de permitir el acceso a rutas protegidas.
+- **RoleGuard**: Controla el acceso a rutas basadas en los roles de los usuarios.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Componentes y Páginas
 
-- Configure the top-level `parserOptions` property like this:
+- **Logout**: Componente para manejar el cierre de sesión de los usuarios.
+- **Home**: Página principal accesible después de la autenticación.
+- **Login**: Página de inicio de sesión para usuarios no autenticados.
+- **Dashboard**: Página accesible solo por usuarios con roles específicos (e.g., ADMIN).
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Estado Global
+
+El manejo del estado global se realiza con Redux, asegurando que los diferentes componentes de la aplicación puedan acceder y modificar el estado de manera centralizada y eficiente.
+
+## Instalación y Configuración
+
+Para instalar y configurar el proyecto, sigue estos pasos:
+
+1. Clona el repositorio.
+2. Ejecuta `pnpm install` para instalar las dependencias.
+3. Configura las variables de entorno si es necesario.
+4. Ejecuta `pnpm dev` para iniciar el servidor de desarrollo.
+
+## Descripción de Carpetas y Archivos
+
+- **assets**: Contiene archivos estáticos como imágenes, fuentes, etc.
+- **components**: Contiene componentes reutilizables de la aplicación. Ejemplo: `Logout`.
+- **guards**: Contiene los guardias de rutas que protegen el acceso a ciertas rutas basadas en autenticación y roles de usuario.
+- **helpers**: Contiene funciones auxiliares y utilidades.
+- **interfaces**: Define las interfaces TypeScript usadas en la aplicación.
+- **models**: Contiene los modelos de datos usados en la aplicación.
+- **pages**: Contiene los componentes de las páginas principales de la aplicación.
+- **redux**: Configuración y módulos de Redux para el manejo del estado global.
+- **services**: Contiene servicios que manejan la lógica de negocio y la comunicación con APIs.
+- **types**: Define los tipos TypeScript globales usados en la aplicación.
+- **App.css**: Estilos globales para el componente App.
+- **index.css**: Estilos globales para la aplicación.
+- **main.tsx**: Punto de entrada principal de la aplicación.
+- **vite-env.d.ts**: Tipos específicos para Vite.
+
+## Estructura del Proyecto
+
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+├── node_modules
+├── public
+├── src
+│   ├── assets
+│   ├── components
+│   │   └── Logout
+│   ├── guards
+│   ├── helpers
+│   ├── interfaces
+│   ├── models
+│   ├── pages
+│   ├── redux
+│   ├── services
+│   ├── types
+│   ├── App.css
+│   ├── index.css
+│   ├── main.tsx
+│   ├── vite-env.d.ts
+├── .eslintrc.cjs
+├── .gitignore
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+```
